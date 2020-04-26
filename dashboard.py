@@ -57,7 +57,7 @@ class ReadStream(threading.Thread):
         read_Thread = True;
         self.Header = 255
         self.returnBytes = 14
-        fileName = datetime.datetime.now().strftime("%d-%m-%y-%H-%M"
+        fileName = datetime.datetime.now().strftime("%d-%m-%y-%H-%M")
         
         self.start()
         
@@ -69,9 +69,9 @@ class ReadStream(threading.Thread):
                     if   dataList[-3] != self.returnBytes:
                          return False   
                          
-                except (ValueError, IndexError):
+               except (ValueError, IndexError):
                     return False
-                return True
+               return True
                 
     def consume_data(self):
         read_thread = True
@@ -87,9 +87,9 @@ class ReadStream(threading.Thread):
                  MPH_Value = self.convertToMPH(int(dataList[-2]))
                  RPM_Value = self.convertToRev(int(dataList[-1]))
                  TEMP_Value = self.convertToTemp(int(dataList[0]))
-                  BATT_Value = self.convertToBattery(float(dataList[1]))
-                  AAC_Value = self.convertToAAC(int(dataList[8])
-                  MAF_Value = self.convertToMAF(int(dataList[5]))
+                 BATT_Value = self.convertToBattery(float(dataList[1]))
+                 AAC_Value = self.convertToAAC(int(dataList[8]))
+                 MAF_Value = self.convertToMAF(int(dataList[5]))
                   
              except (ValueError, IndexError):
                    pass         
@@ -132,8 +132,8 @@ class ReadStream(threading.Thread):
 
 #########################################################################
 
-size = width, height = 1320, 740
-
+size = width, height = 1320, 340
+#740 height
 monitorX = pygame.display.Info().current_w
 monitorY = pygame.display.Info().current_h
 
