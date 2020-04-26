@@ -8,7 +8,7 @@ The protocol reads and writes hex via a serial connection, with dashboard.py sen
 Run the commands in terminal
 group pi
 
-usermod -a -G dialout pi
+sudo usermod -a -G dialout pi
 
 python dashboard.py
 
