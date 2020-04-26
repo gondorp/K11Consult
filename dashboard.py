@@ -37,7 +37,7 @@ os.environ['SDL_VIDEO_WINDOW_POS'] = 'center'
 
 pygame.init()
 
-PORT = serial.Serial('/dev/pts/2', 9600, timeout=None)
+PORT = serial.Serial('/dev/ttyUSB0', 9600, timeout=None)
 
 ########################################################################
 class ReadStream(threading.Thread):
@@ -83,7 +83,7 @@ class ReadStream(threading.Thread):
             if not self.check_data_size(dataList):
                 continue
                 
-             try:
+            try:
                  MPH_Value = self.convertToMPH(int(dataList[-2]))
                  RPM_Value = self.convertToRev(int(dataList[-1]))
                  TEMP_Value = self.convertToTemp(int(dataList[0]))
@@ -91,9 +91,9 @@ class ReadStream(threading.Thread):
                  AAC_Value = self.convertToAAC(int(dataList[8]))
                  MAF_Value = self.convertToMAF(int(dataList[5]))
                   
-             except (ValueError, IndexError):
-                   pass         
-             time.sleep(0.002)
+            except (ValueError, IndexError):
+                 pass         
+            time.sleep(0.002)
 
     def run(self):
         PORT.write('\x5A\x0B\x5A\x01\x5A\x08\x5A\x0C\x5A\x0D\x5A\x03\x5A\x05\x5A\x09\x5A\x13\x5A\x16\x5A\x17\x5A\x1A\x5A\x1C\x5A\x21\xF0')
